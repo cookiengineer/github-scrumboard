@@ -1,0 +1,56 @@
+
+fieldset {
+	display: block;
+	width: 320px;
+	margin: 0px auto;
+	padding: 16px;
+	border: 1px solid #cccccc;
+	border-radius: 16px;
+}
+
+fieldset div {
+	display: block;
+	margin: 0px 0px 16px 0px;
+	text-align: center;
+}
+
+fieldset div:last-of-type {
+	margin-top: 32px;
+	margin-bottom: 32px;
+}
+
+fieldset label {
+	display: block;
+	margin: 0px;
+	padding: 4px 0px;
+	font-family: monospace;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+fieldset input {
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+	font-family: monospace;
+	font-size: 16px;
+	font-weight: normal;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+}
+
+fieldset input:focus {
+	border: 1px solid #666666;
+	outline: none;
+}
+
+fieldset input:invalid {
+	color: #ff2222;
+	border: 1px solid #ff2222;
+	background: rgba(255,0,0,0.1);
+}
+
+fieldset button {
+	float: right;
+}
+

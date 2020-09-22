@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="design/options.css">
+	</head>
+	<body>
+		<fieldset>
+			<div>
+				<label for="username">GitHub Username</label>
+				<input id="username" type="text" pattern="@([a-z0-9\-]{3,39})" placeholder="@username">
+			</div>
+			<div>
+				<label for="token">Personal Access Token</label>
+				<input id="token" type="text" pattern="([a-z0-9]{40})" placeholder="Paste Token here.">
+			</div>
+			<div>
+				Don't know where to get your Token? <a target="_blank" href="https://github.com/settings/tokens">Click here</a>.
+			</div>
+			<button>Save</button>
+		</fieldset>
+		<script src="source/options.js"></script>
+	</body>
+</html>
