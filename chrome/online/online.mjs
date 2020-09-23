@@ -13,7 +13,15 @@ const elements = {
 
 const filter_issue = (issue, filters) => {
 
-	if (filters.milestone !== null) {
+	if (filters.milestone === null) {
+
+		if (issue.milestone === null) {
+			return true;
+		} else {
+			return false;
+		}
+
+	} else if (filters.milestone !== undefined) {
 
 		if (issue.milestone === filters.milestone) {
 			return true;
@@ -23,7 +31,16 @@ const filter_issue = (issue, filters) => {
 
 	}
 
-	if (filters.assignee !== null) {
+
+	if (filters.assignee === null) {
+
+		if (issue.assignees.length === 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	} else if (filters.assignee !== undefined) {
 
 		let found = issue.assignees.filter((a) => a.name === filters.assignee) || null;
 		if (found !== null) {
@@ -47,8 +64,8 @@ const init = function(chrome) {
 	storage.read(() => {
 
 		let filters = {
-			assignee:  null,
-			milestone: null
+			assignee:  undefined,
+			milestone: undefined
 		};
 
 		let settings = {
@@ -98,6 +115,8 @@ const init = function(chrome) {
 
 		[
 			...Array.from(elements.main.children),
+			elements.menu.querySelector('div.d-none'),
+			elements.menu.querySelector('div.table-list-header-toggle'),
 			elements.menu.querySelector('details#author-select-menu'),
 			elements.menu.querySelector('details#project-select-menu'),
 			elements.menu.querySelector('details#label-select-menu'),
