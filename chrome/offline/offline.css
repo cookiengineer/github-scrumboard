@@ -1,0 +1,125 @@
+
+fieldset {
+	display: block;
+	position: relative;
+	width: 480px;
+	margin: 64px auto 64px auto;
+	padding: 16px;
+	border: 1px solid #cccccc;
+	border-radius: 16px;
+}
+
+fieldset > h3 {
+	display: block;
+	margin: 0px 0px 16px 0px;
+	padding: 0px;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+fieldset div {
+	display: block;
+	margin: 0px 0px 16px 0px;
+	text-align: center;
+}
+
+fieldset div:last-of-type {
+	margin-top: 32px;
+	margin-bottom: 32px;
+}
+
+
+
+/*
+ * SCRUMBOARD STYLES
+ */
+
+github-scrumboard {
+	display: flex;
+	position: static;
+	flex-flow: row nowrap;
+	width: 100%;
+	height: 100%;
+	min-height: 32px;
+	max-height: 100vh;
+	border: 1px solid #cccccc;
+	border-radius: 8px 8px 8px 8px;
+	overflow: hidden;
+}
+
+github-scrumboard > github-scrumboard-column {
+	display: block;
+	position: relative;
+	flex: 1;
+	border: 1px solid #cccccc;
+	text-align: center;
+}
+
+github-scrumboard-column > h2 {
+	display: block;
+	margin: 0px;
+	padding: 8px 0px;
+	border-bottom: 1px solid #cccccc;
+}
+
+github-scrumboard-stack {
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+github-scrumboard-issue {
+	display: block;
+	position: relative;
+	margin: 4px;
+	padding: 8px;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	text-align: left;
+	min-height: calc(5em  + 8px);
+	max-height: calc(10em + 8px);
+	transition: background 250ms ease-out;
+	overflow: hidden;
+	cursor: drag;
+}
+
+github-scrumboard-issue:hover {
+	background: #e1e4e8;
+}
+
+github-scrumboard-issue > a {
+	display: block;
+	width: auto;
+	height: 32px;
+	vertical-align: top;
+}
+
+github-scrumboard-issue > figure {
+	display: block;
+	position: absolute;
+	width: auto;
+	height: 32px;
+	top: 0px;
+	right: 0px;
+	bottom: auto;
+	left: auto;
+	margin: 0px;
+	padding: 0px;
+	text-align: right;
+	vertical-align: top;
+}
+
+github-scrumboard-issue > figure > img {
+	display: inline-block;
+	margin: 0px 4px 0px 0px;
+	vertical-align: top;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+github-scrumboard-issue > figure > img:last-child {
+	margin-right: 0px;
+}
+

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="design/options.css">
+		<title>GitHub Scrumboard Options</title>
+		<link rel="stylesheet" href="./options.css">
 	</head>
 	<body>
 		<fieldset>
 			<div>
 				<label for="username">GitHub Username</label>
-				<input id="username" type="text" pattern="@([a-z0-9\-]{3,39})" placeholder="@username">
+				<input id="username" type="text" pattern="([a-z0-9\-]{3,39})" placeholder="username">
 			</div>
 			<div>
 				<label for="token">Personal Access Token</label>
@@ -16,8 +17,13 @@
 			<div>
 				Don't know where to get your Token? <a target="_blank" href="https://github.com/settings/tokens">Click here</a>.
 			</div>
-			<button>Save</button>
+			<button id="save">Save</button>
 		</fieldset>
-		<script src="source/options.js"></script>
+		<fieldset>
+			<h3>Available Scrumboards</h3>
+			<ul id="boards"><li>Currently there are no GitHub issues managed by this Extension</li></ul>
+			<button id="sync">Sync</button>
+		</fieldset>
+		<script type="module" src="./options.mjs"></script>
 	</body>
 </html>

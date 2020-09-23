@@ -10,13 +10,19 @@
 		"128": "icon-128.png"
 	},
 	"content_scripts": [{
-		"css":     [ "design/scrumboard.css" ],
-		"js":      [ "source/scrumboard.js" ],
+		"css":     [ "online/online.css" ],
+		"js":      [ "online/content.js" ],
 		"matches": [
 			"https://github.com/*/*/issues",
 			"https://github.com/*/*/issues?q=*"
 		]
 	}],
+	"web_accessible_resources": [
+		"online/online.mjs",
+		"shared/Github.mjs",
+		"shared/Scrumboard.mjs",
+		"shared/Storage.mjs"
+	],
 	"permissions": [
 		"storage",
 		"https://github.com/*/*/issues",
@@ -24,7 +30,7 @@
 	],
 	"manifest_version": 2,
 	"offline_enabled": true,
-	"options_page": "options.html",
+	"options_page": "options/index.html",
 	"omnibox": {
 		"keyword": "issue"
 	}
