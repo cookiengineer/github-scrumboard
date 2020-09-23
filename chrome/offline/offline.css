@@ -1,4 +1,9 @@
 
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
 fieldset {
 	display: block;
 	position: relative;
@@ -45,6 +50,7 @@ github-scrumboard {
 	max-height: 100vh;
 	border: 1px solid #cccccc;
 	border-radius: 8px 8px 8px 8px;
+	box-sizing: border-box;
 	overflow: hidden;
 }
 
