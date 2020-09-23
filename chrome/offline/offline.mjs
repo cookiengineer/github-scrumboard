@@ -41,13 +41,6 @@ const init = function(chrome) {
 
 			let board = new Scrumboard(cache);
 
-			// board.onchange = (issue, action) => {
-
-			// 	TODO: If navigator.onLine then use Online API
-			// 	console.log(issue, action);
-
-			// };
-
 			elements.title.innerHTML = 'Offline Scrumboard for ' + settings.organization + '/' + settings.repository;
 			elements.main.appendChild(board.element);
 

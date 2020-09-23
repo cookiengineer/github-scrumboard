@@ -96,9 +96,6 @@ const init = function(chrome) {
 		}
 
 
-		console.log(filters);
-
-
 		[
 			...Array.from(elements.main.children),
 			elements.menu.querySelector('details#author-select-menu'),
