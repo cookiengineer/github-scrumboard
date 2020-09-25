@@ -34,6 +34,142 @@ fieldset div:last-of-type {
 	margin-bottom: 32px;
 }
 
+dialog {
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 0px;
+	background: rgba(0,0,0,0.75);
+	z-index: 1024;
+	transform: translate(0%, -100%);
+	transition: all 250ms ease-out;
+}
+
+dialog[open] {
+	transform: translate(0%, 0%);
+}
+
+dialog > article {
+	display: block;
+	position: relative;
+	width: 600px;
+	max-height: 90vh;
+	margin: 64px auto 32px auto;
+	padding: 16px;
+	font-family: "-apple-system","BlinkMacSystemFont","Segoe UI","Helvetica","Arial","sans-serif","Apple Color Emoji","Segoe UI Emoji";
+	font-size: 16px;
+	color: #222222;
+	background: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 12px;
+	overflow: auto;
+}
+
+dialog > article h3 {
+	display: block;
+	margin: 0px 0px 16px 0px;
+	padding: 0px;
+	font-size: 32px;
+	font-weight: 500;
+	line-height: 32px;
+	text-align: center;
+	text-transform: uppercase;
+	overflow: hidden;
+}
+
+dialog > article h4 {
+	margin: 0px 0px 16px 0px;
+	padding: 0px;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 24px;
+}
+
+dialog > article button {
+	display: block;
+	position: fixed;
+	top: 16px;
+	right: 16px;
+	bottom: auto;
+	left: auto;
+	cursor: pointer;
+}
+
+dialog > article section {
+	display: block;
+	margin: 64px 0px 64px 0px;
+	padding: 16px;
+	border: 1px solid #cccccc;
+	border-radius: 6px;
+}
+
+dialog > article section:first-of-type {
+	margin-top: 0px;
+}
+
+dialog > article section:last-of-type {
+	margin-bottom: 0px;
+}
+
+dialog > article a {
+	color: #22ccff;
+}
+
+dialog > article pre {
+	margin: 1em 0px;
+	padding: 16px;
+	font-size: 85%;
+	line-height: 1.45;
+	background: #f6f8fa;
+	border-radius: 6px;
+	white-space: pre;
+	overflow: auto;
+}
+
+dialog > article code {
+	display: inline;
+	margin: 0px;
+	padding: 0.2em 0.4em;
+	background: rgba(27,31,35,0.05);
+	border-radius: 6px;
+}
+
+dialog > article pre code {
+	margin: 0px;
+	padding: 0px;
+	overflow: visible;
+	line-height: inherit;
+	background: transparent;
+	border: none;
+	border-radius: none;
+}
+
+dialog > article p {
+	margin: 0px 0px 16px 0px;
+}
+
+dialog > article ul {
+	margin: 16px 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+dialog > article ul li {
+	margin: 0px;
+	padding: 0px;
+}
+
+dialog > article ul li:before {
+	display: inline;
+	content: '-';
+}
+
 
 
 /*
@@ -82,7 +218,7 @@ github-scrumboard-issue {
 	margin: 4px;
 	padding: 8px;
 	border: 1px solid #cccccc;
-	border-radius: 4px;
+	border-radius: 8px;
 	text-align: left;
 	min-height: calc(5em  + 8px);
 	max-height: calc(10em + 8px);
@@ -95,8 +231,9 @@ github-scrumboard-issue:hover {
 	background: #e1e4e8;
 }
 
-github-scrumboard-issue > a {
+github-scrumboard-issue a {
 	display: block;
+	color: #22ccff;
 	width: auto;
 	height: 32px;
 	vertical-align: top;
@@ -127,5 +264,20 @@ github-scrumboard-issue > figure > img {
 
 github-scrumboard-issue > figure > img:last-child {
 	margin-right: 0px;
+}
+
+
+
+/*
+ * DARK THEME
+ */
+
+body[data-theme="dark"] {
+	color: #ffffff;
+	background: #222222;
+}
+
+body[data-theme="dark"] github-scrumboard-issue:hover {
+	background: #444444;
 }
 

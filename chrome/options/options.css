@@ -78,10 +78,14 @@ fieldset ul {
 
 fieldset ul li {
 	display: block;
+	margin: 0px;
+	padding: 0px;
 	height: 32px;
 	font-size: 1em;
-	line-height: 1.5em;
+	line-height: 32px;
+	list-style: none;
 	vertical-align: middle;
+	border-top: 1px solid #cccccc;
 }
 
 fieldset ul li a {
@@ -97,5 +101,16 @@ fieldset a {
 
 fieldset button {
 	vertical-align: middle;
+}
+
+
+
+/*
+ * DARK THEME
+ */
+
+body[data-theme="dark"] {
+	color: #ffffff;
+	background: #222222;
 }
 

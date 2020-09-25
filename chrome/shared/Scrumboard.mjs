@@ -11,6 +11,7 @@ const Scrumboard = function(data) {
 	this.element      = window.document.createElement('github-scrumboard');
 	this.issues       = [];
 	this.onchange     = null;
+	this.ondetail     = null;
 	this.organization = null;
 	this.repository   = null;
 
@@ -153,6 +154,19 @@ Scrumboard.prototype = {
 			element.innerHTML = content.join('');
 			element.setAttribute('data-number', issue.number);
 			element.setAttribute('draggable',   'true');
+
+			element.onclick = (event) => {
+
+				if (this.ondetail !== null) {
+
+					this.ondetail(issue);
+
+					event.preventDefault();
+					event.stopPropagation();
+
+				}
+
+			};
 
 			element.ondragstart = (event) => {
 				event.dataTransfer.setData('number', issue.number);

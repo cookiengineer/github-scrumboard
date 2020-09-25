@@ -194,60 +194,67 @@ const init = function(chrome) {
 				}
 
 
-				storage.save(CACHE);
+				storage.save({
+					boards: CACHE.boards
+				}, () => {
 
+					let board = new Scrumboard({
+						issues:       issues.filter((i) => filter_issue(i, filters)),
+						organization: settings.organization,
+						repository:   settings.repository
+					});
 
-				let board = new Scrumboard({
-					issues:       issues.filter((i) => filter_issue(i, filters)),
-					organization: settings.organization,
-					repository:   settings.repository
-				});
+					board.onchange = (issue, action) => {
 
-				board.onchange = (issue, action) => {
+						if (action.label !== null) {
 
-					if (action.label !== null) {
+							let found = issue.labels.find((l) => l.name === action.label) || null;
+							if (found === null) {
 
-						let found = issue.labels.find((l) => l.name === action.label) || null;
-						if (found === null) {
+								issue.labels = issue.labels.filter((l) => {
+									return [ 'todo', 'in-progress', 'in-testing' ].includes(l.name) === false;
+								});
 
-							issue.labels = issue.labels.filter((l) => {
-								return [ 'todo', 'in-progress', 'in-testing' ].includes(l.name) === false;
-							});
+								issue.labels.push({
+									name:  action.label,
+									color: '#22ccff'
+								});
 
-							issue.labels.push({
-								name:  action.label,
-								color: '#22ccff'
-							});
+								GITHUB.query('PUT', 'issues/' + issue.number + '/labels', {
+									labels: issue.labels.map((l) => l.name)
+								});
 
-							GITHUB.query('PUT', 'issues/' + issue.number + '/labels', {
-								labels: issue.labels.map((l) => l.name)
+							}
+
+						}
+
+						if (
+							(
+								issue.state === 'open'
+								&& action.state === 'closed'
+							) || (
+								issue.state === 'closed'
+								&& action.state === 'open'
+							)
+						) {
+
+							issue.state = action.state;
+
+							GITHUB.query('PATCH', 'issues/' + issue.number, {
+								state: action.state
 							});
 
 						}
 
-					}
+					};
 
-					if (
-						(
-							issue.state === 'open'
-							&& action.state === 'closed'
-						) || (
-							issue.state === 'closed'
-							&& action.state === 'open'
-						)
-					) {
+					board.ondetail = (issue) => {
+						window.open('https://github.com/' + settings.organization + '/' + settings.repository + '/issues/' + issue.number);
+					};
 
-						issue.state = action.state;
+					elements.main.appendChild(board.element);
 
-						GITHUB.query('PATCH', 'issues/' + issue.number, {
-							state: action.state
-						});
-
-					}
-
-				};
-
-				elements.main.appendChild(board.element);
+				});
 
 			});
 

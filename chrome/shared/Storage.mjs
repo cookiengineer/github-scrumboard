@@ -28,7 +28,7 @@ Storage.prototype = {
 		callback = isFunction(callback) ? callback : () => {};
 
 
-		this.chrome.storage.sync.get('github-scrumboard', (blob) => {
+		this.chrome.storage.local.get('github-scrumboard', (blob) => {
 
 			let data = blob['github-scrumboard'] || null;
 
@@ -103,14 +103,11 @@ Storage.prototype = {
 		}
 
 
-		this.chrome.storage.sync.set({
+		this.chrome.storage.local.set({
 			'github-scrumboard': CACHE
-		});
-
-
-		setTimeout(() => {
+		}, () => {
 			callback();
-		}, 0);
+		});
 
 	}
 

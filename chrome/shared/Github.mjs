@@ -1,12 +1,33 @@
 
 const isArray    = (val) => Object.prototype.toString.call(val) === '[object Array]';
 const isFunction = (val) => Object.prototype.toString.call(val) === '[object Function]';
+const isNumber   = (val) => Object.prototype.toString.call(val) === '[object Number]';
 const isObject   = (val) => Object.prototype.toString.call(val) === '[object Object]';
 const isString   = (val) => Object.prototype.toString.call(val) === '[object String]';
 
 
 
 const TRANSFORMER = {
+
+	comment: (data) => {
+
+		let comment = {
+			body: data.body,
+			time: data.updated_at,
+			user: null
+		};
+
+		if (isObject(data.user) === true) {
+
+			if (isString(data.user.login) === true) {
+				comment.user = data.user.login;
+			}
+
+		}
+
+		return comment;
+
+	},
 
 	label: (data) => {
 
@@ -20,12 +41,15 @@ const TRANSFORMER = {
 	issue: (data) => {
 
 		let issue = {
-			assignees: [],
-			labels:    [],
-			milestone: null,
-			number:    data.number,
-			state:     data.state,
-			title:     data.title
+			assignees:   [],
+			body:        data.body,
+			comments:    [],
+			labels:      [],
+			milestone:   null,
+			number:      data.number,
+			state:       data.state,
+			title:       data.title,
+			'/comments': 0
 		};
 
 
@@ -35,6 +59,16 @@ const TRANSFORMER = {
 					avatar: assignee.avatar_url,
 					name:   assignee.login
 				};
+			});
+		}
+
+		if (isNumber(data.comments) === true) {
+			issue['/comments'] = data.comments;
+		}
+
+		if (isArray(data.comments) === true) {
+			issue.comments = data.comments.map((comment) => {
+				return TRANSFORMER.comment(comment);
 			});
 		}
 
@@ -90,10 +124,10 @@ Github.prototype = {
 
 	query: function(type, method, data, callback) {
 
-		type     = [ 'GET', 'PATCH', 'POST', 'PUT' ].includes(type)   ? type     : null;
-		method   = [ 'labels', 'issues'            ].includes(method) ? method   : null;
-		data     = isObject(data)                                     ? data     : null;
-		callback = isFunction(callback)                               ? callback : () => {};
+		type     = [ 'GET', 'PATCH', 'POST', 'PUT' ].includes(type) ? type     : null;
+		method   = isString(method)                                 ? method   : null;
+		data     = isObject(data)                                   ? data     : null;
+		callback = isFunction(callback)                             ? callback : () => {};
 
 
 		if (
@@ -148,6 +182,10 @@ Github.prototype = {
 						data = null;
 					}
 
+
+					let todo = 0;
+					let done = 0;
+
 					if (method === 'labels') {
 						data = data.map((d) => TRANSFORMER.label(d));
 						data = data.sort((a, b) => {
@@ -157,20 +195,61 @@ Github.prototype = {
 						});
 					}
 
-					if (method === 'issues') {
+					if (method ===  'issues') {
 
 						if (isArray(data) === true) {
+
 							data = data.map((d) => TRANSFORMER.issue(d));
 							data = data.sort((a, b) => {
 								if (a.number < b.number) return  1;
 								if (a.number > b.number) return -1;
 								return 0;
 							});
+
+							data.forEach((issue) => {
+
+								if (
+									isNumber(issue.number) === true
+									&& isNumber(issue['/comments']) === true
+									&& issue['/comments'] > 0
+								) {
+
+									todo++;
+
+									this.query('GET', 'issues/' + issue.number + '/comments', {
+									}, (comments) => {
+										issue.comments = comments;
+										done++;
+									});
+
+								}
+
+							});
+
+						}
+
+					} else if (method.startsWith('issues/') && method.endsWith('/comments')) {
+
+						if (isArray(data) === true) {
+							data = data.map((d) => TRANSFORMER.comment(d));
 						}
 
 					}
 
-					callback(data);
+					if (todo !== done) {
+
+						let interval = setInterval(() => {
+
+							if (todo === done) {
+								clearInterval(interval);
+								callback(data);
+							}
+
+						}, 1000);
+
+					} else {
+						callback(data);
+					}
 
 				} else {
 

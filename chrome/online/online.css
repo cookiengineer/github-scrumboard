@@ -45,7 +45,7 @@ github-scrumboard-issue {
 	margin: 4px;
 	padding: 8px;
 	border: 1px solid #cccccc;
-	border-radius: 4px;
+	border-radius: 8px;
 	text-align: left;
 	min-height: calc(5em  + 8px);
 	max-height: calc(10em + 8px);

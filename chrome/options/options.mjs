@@ -87,5 +87,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	});
 
+	let time = new Date();
+	if (time.getHours() > 20 || time.getHours() < 8) {
+
+		let body = window.document.querySelector('body');
+		if (body !== null) {
+			body.setAttribute('data-theme', 'dark');
+		}
+
+	}
+
 });
 
