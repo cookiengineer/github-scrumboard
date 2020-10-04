@@ -5,6 +5,9 @@
 brought to you as libre software with joy and pride by [Cookie Engineer](https://cookie.engineer).
 
 
+<video src="https://i.imgur.com/pzcJDUF.mp4"></video>
+
+
 ## Features
 
 - GitHub Scrum Board Chrome/Chromium/Opera Browser Extension
