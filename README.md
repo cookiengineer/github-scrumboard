@@ -5,7 +5,9 @@
 brought to you as libre software with joy and pride by [Cookie Engineer](https://cookie.engineer).
 
 
-<video src="https://i.imgur.com/pzcJDUF.mp4"></video>
+# TL;DR
+
+Want to see a Demo? [Watch a Screencast](https://i.imgur.com/pzcJDUF.mp4)
 
 
 ## Features
