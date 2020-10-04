@@ -1,4 +1,4 @@
-# GitHub Scrum Board (v0.0.3)
+# GitHub Scrum Board (v0.0.1)
 
 ## The minimalistic GitHub-integrated Scrum Board
 
@@ -7,26 +7,23 @@ brought to you as libre software with joy and pride by [Cookie Engineer](https:/
 
 ## Features
 
-- GitHub Scrum Board Chrome/Chromium/Opera extension
+- GitHub Scrum Board Chrome/Chromium/Opera Browser Extension
 - No third-party Server API, only uses `api.github.com` (via HTTPS and proper CORS)
 - Free Libre Open Source Software (FLOSS)
 - GitHub labels integration (`todo`, `in-progress`, `in-testing`)
 - GitHub assignee integration
-- Open issues are defaulted into `Backlog`
-- Closed issues are defaulted into `Done`
-- Drag and Drop Issue Cards onto their Column
-- Milestone Support (filter by Milestone)
-- Injected CSS in GitHub style, no annoying Iframes, Modals or Popups
-- Personal Access Token, multiple repositories can be managed
-- Overrides only `/issues` of each GitHub Repository on reload, nothing more
-- If you want back to the old view of GitHub, just click on the Issues tab.
+- GitHub milestones integration
+- Open Issues are defaulted into `Backlog`
+- Closed Issues are defaulted into `Done`
+- Intuitive Drag and Drop support
+- Overrides `https://github.com/*/*/issues` URLs of each GitHub Repository
 
 
 ## Overview
 
 This Browser extension replaces the `https://github.com/<orga>/<repo>/issues` URL
 and shows them as a Scrum Board while keeping the integration of `milestone` and
-`assignee` search.
+`assignee` search alive.
 
 The Scrum Board uses Github's Issue labels (`todo`, `in-progress` and `in-testing`)
 and everything is integrated via the official GitHub API only. There are no third-party
@@ -36,13 +33,14 @@ servers, accounts, or any kind of paid services involved here.
 ## Installation: Chrome
 
 I could not submit it for free into the Chrome App Store, because I do not own a credit card.
-Yes, you are allowed WTF is going on here.
+Yes, you are allowed to wonder about WTF is going on there.
 
 There are two ways to install this extension:
 
 **Local Installation**
 
-1. Go to `chrome://extensions` and drag the CRX file from the [releases section](https://github.com/cookiengineer/github-scrumboard/releases) onto the Chrome window.
+1. Go to `chrome://extensions`
+2. Drag the CRX file from the [releases section](https://github.com/cookiengineer/github-scrumboard/releases) onto the Browser window.
 
 **Developer Mode Installation**
 
@@ -71,15 +69,13 @@ rights.
 Now copy/paste the token to the `Options` Page and click `Save`.
 
 
-## Usage
+## Offline Usage
 
-# IMPORTANT
+Right Click the Extension icon and select `Options`.
 
-- This extension replaces the `/issues` view of each repository on GitHub.
-- It does **NOT** replace the direct links, click on a GitHub internal link and it will behave like it did before.
-- Modify the Issue cards on the Scrum Board via Drag and Drop.
-- Modify the Milestone Filter by selecting a Milestone.
-- Modify the Assignee Filter by selecting an Assignee.
+In the `Available Scrumboards` list, click on the `offline` link
+that will open a new window with a fullscreen Scumboard and the
+Issues gathered from the Extension's local storage.
 
 
 ## Contributing
