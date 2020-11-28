@@ -1,7 +1,7 @@
 {
 	"author": "Cookie Engineer <@cookiengineer>",
 	"name": "GitHub Scrumboard",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Better Planning of GitHub Issues (no third-party API)",
 	"icons": {
 		"16":  "icon-16.png",
