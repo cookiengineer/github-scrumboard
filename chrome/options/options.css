@@ -1,12 +1,19 @@
 
+body {
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px;
+}
+
 fieldset {
 	display: block;
 	position: relative;
-	width: 480px;
+	width: 512px;
 	margin: 64px auto 64px auto;
 	padding: 16px;
 	border: 1px solid #cccccc;
-	border-radius: 16px;
+	border-radius: 8px;
+	box-sizing: border-box;
 }
 
 fieldset:last-of-type {
@@ -24,6 +31,7 @@ fieldset > h3 {
 	font-size: 2em;
 	font-weight: bold;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 
@@ -78,11 +86,12 @@ fieldset ul {
 
 fieldset ul li {
 	display: block;
+	position: relative;
 	margin: 0px;
 	padding: 0px;
-	height: 32px;
+	height: 2em;
 	font-size: 1em;
-	line-height: 32px;
+	line-height: 2em;
 	list-style: none;
 	vertical-align: middle;
 	border-top: 1px solid #cccccc;
@@ -93,6 +102,19 @@ fieldset ul li a {
 	margin: 0px 2px;
 	padding: 0px;
 	vertical-align: top;
+}
+
+fieldset ul li button {
+	display: none;
+}
+
+fieldset ul li:hover button {
+	display: inline-block;
+	position: absolute;
+	top: 4px;
+	right: 0px;
+	bottom: auto;
+	left: auto;
 }
 
 fieldset a {

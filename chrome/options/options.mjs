@@ -3,7 +3,7 @@ import { CACHE, Storage } from '../shared/Storage.mjs';
 
 
 
-const render = (board) => {
+const render = (board, storage) => {
 
 	let element = document.createElement('li');
 
@@ -15,8 +15,28 @@ const render = (board) => {
 		'<a target="_blank" href="https://github.com/' + board.organization + '/' + board.repository + '/issues">online</a>',
 		' ',
 		'<a target="_blank" href="' + chrome.runtime.getURL('offline/index.html') + '?id=' + board.organization + '/' + board.repository + '">offline</a>',
-		' with ' + board.issues.length + ' issues '
+		' with ' + board.issues.length + ' issues ',
+		'<button title="Remove locally stored issues">X</button>'
 	].join('');
+
+	setTimeout(() => {
+
+		let button = element.querySelector('button');
+		if (button !== null) {
+			button.onclick = () => {
+
+				element.parentNode.removeChild(element);
+
+				storage.save({
+					username: CACHE.username,
+					token:    CACHE.token,
+					boards:   CACHE.boards.filter((b) => b !== board)
+				});
+
+			};
+		}
+
+	}, 0);
 
 	return element;
 
@@ -37,7 +57,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		boards:   document.querySelector('ul#boards'),
 		save:     document.querySelector('button#save')
 	};
-
 
 
 	elements.save.onclick = () => {
@@ -78,7 +97,7 @@ window.addEventListener('DOMContentLoaded', () => {
 					if (a.repository   > b.repository)   return  1;
 					return 0;
 				}).forEach((board) => {
-					elements.boards.appendChild(render(board));
+					elements.boards.appendChild(render(board, storage));
 				});
 
 			}

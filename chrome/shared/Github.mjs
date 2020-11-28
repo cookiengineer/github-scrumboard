@@ -48,10 +48,19 @@ const TRANSFORMER = {
 			milestone:   null,
 			number:      data.number,
 			state:       data.state,
+			time:        data.updated_at,
 			title:       data.title,
+			user:        null,
 			'/comments': 0
 		};
 
+		if (isObject(data.user) === true) {
+
+			if (isString(data.user.login) === true) {
+				issue.user = data.user.login;
+			}
+
+		}
 
 		if (isArray(data.assignees) === true) {
 			issue.assignees = data.assignees.map((assignee) => {

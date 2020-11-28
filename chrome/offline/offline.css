@@ -2,6 +2,7 @@
 body {
 	margin: 0px;
 	padding: 0px;
+	font-size: 16px;
 }
 
 fieldset {
@@ -11,7 +12,12 @@ fieldset {
 	margin: 64px auto 64px auto;
 	padding: 16px;
 	border: 1px solid #cccccc;
-	border-radius: 16px;
+	border-radius: 8px;
+	box-sizing: border-box;
+}
+
+fieldset a {
+	color: #22ccff;
 }
 
 fieldset > h3 {
@@ -26,19 +32,14 @@ fieldset > h3 {
 fieldset div {
 	display: block;
 	margin: 0px 0px 16px 0px;
-	text-align: center;
-}
-
-fieldset div:last-of-type {
-	margin-top: 32px;
-	margin-bottom: 32px;
+	text-align: justify;
 }
 
 dialog {
 	display: block;
 	position: fixed;
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
@@ -46,8 +47,9 @@ dialog {
 	margin: 0px;
 	padding: 0px;
 	background: rgba(0,0,0,0.75);
+	box-sizing: border-box;
 	z-index: 1024;
-	transform: translate(0%, -100%);
+	transform: translate(0%, -100vh);
 	transition: all 250ms ease-out;
 }
 
@@ -59,20 +61,22 @@ dialog > article {
 	display: block;
 	position: relative;
 	width: 600px;
-	max-height: 90vh;
-	margin: 64px auto 32px auto;
+	height: 100vh;
+	margin: 0px auto 0px auto;
 	padding: 16px;
 	font-family: "-apple-system","BlinkMacSystemFont","Segoe UI","Helvetica","Arial","sans-serif","Apple Color Emoji","Segoe UI Emoji";
 	font-size: 16px;
 	color: #222222;
 	background: #ffffff;
 	border: 1px solid #cccccc;
-	border-radius: 12px;
-	overflow: auto;
+	border-radius: 8px;
+	box-sizing: border-box;
+	overflow: hidden auto;
 }
 
 dialog > article h3 {
 	display: block;
+	width: calc(100% - 32px);
 	margin: 0px 0px 16px 0px;
 	padding: 0px;
 	font-size: 32px;
@@ -80,20 +84,22 @@ dialog > article h3 {
 	line-height: 32px;
 	text-align: center;
 	text-transform: uppercase;
+	white-space: pre;
+	box-sizing: border-box;
 	overflow: hidden;
 }
 
 dialog > article h4 {
 	margin: 0px 0px 16px 0px;
 	padding: 0px;
-	font-size: 24px;
+	font-size: 1.25em;
 	font-weight: 500;
-	line-height: 24px;
+	line-height: 1.25em;
 }
 
 dialog > article button {
 	display: block;
-	position: fixed;
+	position: absolute;
 	top: 16px;
 	right: 16px;
 	bottom: auto;
@@ -103,8 +109,8 @@ dialog > article button {
 
 dialog > article section {
 	display: block;
-	margin: 64px 0px 64px 0px;
-	padding: 16px;
+	margin: 2em 0px 2em 0px;
+	padding: 1em;
 	border: 1px solid #cccccc;
 	border-radius: 6px;
 }
@@ -181,9 +187,7 @@ github-scrumboard {
 	position: static;
 	flex-flow: row nowrap;
 	width: 100%;
-	height: 100%;
-	min-height: 32px;
-	max-height: 100vh;
+	height: 100vh;
 	border: 1px solid #cccccc;
 	border-radius: 8px 8px 8px 8px;
 	box-sizing: border-box;
@@ -219,9 +223,9 @@ github-scrumboard-issue {
 	display: block;
 	position: relative;
 	margin: 4px;
-	padding: 8px;
+	padding: 4px;
 	border: 1px solid #cccccc;
-	border-radius: 8px;
+	border-radius: 4px;
 	text-align: left;
 	min-height: calc(5em  + 8px);
 	max-height: calc(10em + 8px);

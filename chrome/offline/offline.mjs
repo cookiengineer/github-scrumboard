@@ -198,11 +198,24 @@ const render = (content) => {
 
 const init = function(chrome) {
 
-	let button = elements.dialog.querySelector('button');
-	if (button !== null) {
-		button.onclick = () => {
-			elements.dialog.removeAttribute('open');
+	let dialog = elements.dialog;
+	if (dialog !== null) {
+
+		dialog.onclick = (event) => {
+
+			if (event.target === dialog) {
+				dialog.removeAttribute('open');
+			}
+
 		};
+
+		let button = dialog.querySelector('button');
+		if (button !== null) {
+			button.onclick = () => {
+				elements.dialog.removeAttribute('open');
+			};
+		}
+
 	}
 
 
@@ -246,14 +259,17 @@ const init = function(chrome) {
 				});
 
 				let section = document.createElement('section');
-				section.innerHTML = render(issue.body);
+				section.innerHTML = [
+					'<h4>' + issue.user + ' opened at ' + issue.time + ':</h4>',
+					render(issue.body)
+				];
 				elements.article.appendChild(section);
 
 				issue.comments.forEach((comment) => {
 
 					let section = document.createElement('section');
 					section.innerHTML = [
-						'<h4>' + comment.user + ' wrote at ' + comment.time + ':</h4>',
+						'<h4>' + comment.user + ' commented at ' + comment.time + ':</h4>',
 						render(comment.body)
 					].join('');
 					elements.article.appendChild(section);
@@ -266,6 +282,22 @@ const init = function(chrome) {
 
 			elements.title.innerHTML = 'Offline Scrumboard for ' + settings.organization + '/' + settings.repository;
 			elements.main.appendChild(board.element);
+
+		} else {
+
+			if (settings.organization !== null && settings.repository !== null) {
+
+				let link = elements.main.querySelector('fieldset a');
+				if (link !== null) {
+
+					let href = 'https://github.com/' + settings.organization + '/' + settings.repository + '/issues';
+
+					link.setAttribute('href', href);
+					link.innerHTML = href;
+
+				}
+
+			}
 
 		}
 
