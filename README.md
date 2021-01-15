@@ -1,46 +1,40 @@
-# GitHub Scrum Board (v0.0.1)
-
-## The minimalistic GitHub-integrated Scrum Board
 
 brought to you as libre software with joy and pride by [Cookie Engineer](https://cookie.engineer).
 
+# GitHub Scrum Board
 
-# TL;DR
-
-Want to see a Demo? [Watch a Screencast](https://i.imgur.com/pzcJDUF.mp4)
-
-
-## Features
-
-- GitHub Scrum Board Chrome/Chromium/Opera Browser Extension
-- No third-party Server API, only uses `api.github.com` (via HTTPS and proper CORS)
-- Free Libre Open Source Software (FLOSS)
-- GitHub labels integration (`todo`, `in-progress`, `in-testing`)
-- GitHub assignee integration
-- GitHub milestones integration
-- Open Issues are defaulted into `Backlog`
-- Closed Issues are defaulted into `Done`
-- Intuitive Drag and Drop support
-- Overrides `https://github.com/*/*/issues` URLs of each GitHub Repository
+This Web Extension is a Scrum Board for GitHub Issues that can be used
+both Online and Offline, so that your workflow isn't interrupted when
+you don't have Internet access.
 
 
-## Overview
+## Usage
 
-This Browser extension replaces the `https://github.com/<orga>/<repo>/issues` URL
-and shows them as a Scrum Board while keeping the integration of `milestone` and
-`assignee` search alive.
+This Extension replaces the `https://github.com/<orga>/<repo>/issues`
+URL and shows them as a Scrum Board while keeping the integration of
+the `milestone` and `assignee` search alive.
 
-The Scrum Board uses Github's Issue labels (`todo`, `in-progress` and `in-testing`)
-and everything is integrated via the official GitHub API only. There are no third-party
-servers, accounts, or any kind of paid services involved here.
+Open Issues are moved into `Backlog`, Closed Issues are moved into `Done`.
+
+Additionally, the Scrum Board uses GitHub's Issue Labels (`todo`,
+`in-progress` and `in-testing`) to keep the issues integrated with
+the official GitHub API (`https://api.github.com/`).
+
+There are no third-party servers, accounts, or any kind of paid service
+involved here.
 
 
-## Installation: Chrome
+## Screencast
 
-I could not submit it for free into the Chrome App Store, because I do not own a credit card.
-Yes, you are allowed to wonder about WTF is going on there.
+![Screencast](https://i.imgur.com/pzcJDUF.mp4)
 
-There are two ways to install this extension:
+
+## Installation
+
+I could not submit it for free into the Chrome App Store, because I do
+not own a credit card and I don't intend to get one.
+
+There are two ways to install this Extension:
 
 **Local Installation**
 
@@ -50,7 +44,7 @@ There are two ways to install this extension:
 **Developer Mode Installation**
 
 1. Clone this repository to your hard drive via git.
-2. Go to `chrome://extensions` and point it to the `github-scrumboard/chrome` folder.
+2. Go to `chrome://extensions` and point it to the `chrome` folder.
 
 
 ## Configuration
@@ -59,19 +53,13 @@ Right Click the Extension icon and select `Options` in order to see
 the Settings of the Extension.
 
 The extension requires a so-called GitHub `Personal Access Token`
-in order to work. This is required, because there's no server or
-any API hosted by us - so authentication will only work via those
+in order to work. This is required, because there's no Server and
+no App hosted anywhere - so authentication will only work via those
 tokens.
 
-Don't worry. The extension can only read your repository's issues
-and modify the issue labels. Nothing else is touched and you can't
-break repositories you don't have access to.
-
-On the [Tokens](https://github.com/settings/tokens) Page, create a
-new token called `github-scrumboard` and allow only `repo` access
-rights.
-
-Now copy/paste the token to the `Options` Page and click `Save`.
+- Go to the [Tokens](https://github.com/settings/tokens) Page
+- Create a new token called `github-scrumboard` with `repo` access rights.
+- Copy/paste the token to the `Options` Page and click `Save`.
 
 
 ## Offline Usage
@@ -83,7 +71,15 @@ that will open a new window with a fullscreen Scumboard and the
 Issues gathered from the Extension's local storage.
 
 
-## Contributing
+## License
 
-Feel free to fork this project, Pull-Requests are always welcome!
+This Web Extension is licensed under the [GNU AGPL 3.0](./AGPL-3.0.md) license.
+
+
+## Sponsorship
+
+If you like the work that I do and want me to continue working on things
+like this; it would be awesome if you would sponsor this project:
+
+https://github.com/sponsors/cookiengineer
 
