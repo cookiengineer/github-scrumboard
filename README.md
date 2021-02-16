@@ -21,12 +21,19 @@ Additionally, the Scrum Board uses GitHub's Issue Labels (`todo`,
 the official GitHub API (`https://api.github.com/`).
 
 There are no third-party servers, accounts, or any kind of paid service
-involved here.
+involved here. Issues are synchronized automatically once you visit
+the `/issues` URL of a repository while being online.
 
 
-## Screencast
+## Screenshots
 
-![Screencast](https://i.imgur.com/pzcJDUF.mp4)
+![screenshot-github](./docs/screenshot-github.jpg)
+
+![screenshot-options](./docs/screenshot-options.jpg)
+
+![screenshot-offline](./docs/screenshot-offline.jpg)
+
+![screenshot-offline-issue](./docs/screenshot-offline-issue.jpg)
 
 
 ## Installation
